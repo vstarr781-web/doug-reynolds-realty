@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doug Reynolds — Sacramento Real Estate | Coldwell Banker</title>
+  <meta name="description" content="Doug Reynolds, Realtor at Coldwell Banker. Sacramento real estate expert since 2006. Buy, sell, or invest with confidence."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0C1D36;
+      --navy-light: #152A4A;
+      --white: #FFFFFF;
+      --off-white: #F8F9FB;
+      --ice: #EEF1F6;
+      --blue: #1B5FAA;
+      --blue-light: #2E7AD4;
+      --gold: #C9A84C;
+      --gold-soft: #D4B966;
+      --text: #1A1E2C;
+      --text-muted: #6B7186;
+      --border: rgba(27,95,170,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 60px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    nav.scrolled {
+      padding: 14px 60px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 600;
+      color: var(--navy); text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--blue); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none; font-weight: 500;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+    .nav-links a.active::after {
+      content: ''; position: absolute; bottom: -6px; left: 0; right: 0;
+      height: 2px; background: var(--blue); border-radius: 1px;
+    }
+    .nav-cta {
+      font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--white); background: var(--blue); border: 1px solid var(--blue);
+      padding: 10px 26px; text-decoration: none; font-weight: 600;
+      transition: all 0.3s; border-radius: 4px;
+    }
+    .nav-cta:hover { background: var(--navy); border-color: var(--navy); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; cursor: pointer; background: none; border: none;
+      flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--navy);
+      transition: all 0.3s; border-radius: 1px;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      position: relative; overflow: hidden;
+    }
+    .hero-left {
+      background: var(--navy);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 140px 70px 80px;
+      position: relative;
+      animation: fadeLeft 1s 0.3s ease both;
+    }
+    .hero-left::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0;
+      width: 4px; background: linear-gradient(180deg, var(--blue) 0%, var(--gold) 100%);
+    }
+    .hero-eyebrow {
+      font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 28px; font-weight: 600;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 4.5vw, 5rem);
+      font-weight: 400; line-height: 1.08;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .hero-name em { font-style: italic; color: var(--blue-light); display: block; }
+    .hero-tagline {
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold-soft); margin-top: 18px; margin-bottom: 40px;
+    }
+    .hero-desc {
+      font-size: 0.95rem; line-height: 1.85;
+      color: rgba(255,255,255,0.55); max-width: 400px; font-weight: 300;
+    }
+    .hero-actions {
+      display: flex; gap: 20px; margin-top: 48px; align-items: center; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block; font-size: 0.7rem; letter-spacing: 0.18em;
+      text-transform: uppercase; background: var(--blue); color: white;
+      padding: 16px 36px; text-decoration: none; font-weight: 600;
+      transition: all 0.3s; border: 2px solid var(--blue); border-radius: 4px;
+    }
+    .btn-primary:hover { background: transparent; color: var(--blue-light); }
+    .btn-secondary {
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); text-decoration: none; font-weight: 400;
+      display: flex; align-items: center; gap: 10px; transition: color 0.3s;
+    }
+    .btn-secondary::after {
+      content: ''; width: 30px; height: 1px; background: currentColor; transition: width 0.3s;
+    }
+    .btn-secondary:hover { color: var(--gold); }
+    .btn-secondary:hover::after { width: 50px; }
+
+    .hero-right { position: relative; overflow: hidden; animation: fadeRight 1s 0.3s ease both; }
+    .hero-img-bg {
+      width: 100%; height: 100%;
+      background: url('http://realestatewithdoug.com/wp-content/uploads/2021/03/house.jpg') center/cover no-repeat;
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .hero-img-bg::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(12,29,54,0.55) 0%, rgba(12,29,54,0.35) 50%, rgba(12,29,54,0.55) 100%);
+    }
+    .hero-stat-block {
+      position: absolute; bottom: 60px; left: 50px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(27,95,170,0.3);
+      backdrop-filter: blur(10px); padding: 28px 36px; border-radius: 6px;
+      animation: fadeUp 1s 0.8s ease both;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem; font-weight: 400; color: var(--gold-soft); line-height: 1;
+    }
+    .stat-label-hero {
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-top: 6px;
+    }
+    .hero-badge {
+      position: absolute; top: 80px; right: 50px; width: 120px; height: 120px;
+      border: 1px solid rgba(27,95,170,0.35); border-radius: 50%;
+      animation: spin 25s linear infinite;
+    }
+    .hero-badge-inner {
+      position: absolute; top: 80px; right: 50px; width: 120px; height: 120px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    }
+    .badge-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold-soft); line-height: 1; }
+    .badge-text { font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); line-height: 1.4; margin-top: 4px; }
+    .hero-house-visual { position: relative; z-index: 2; text-align: center; }
+
+    /* ── MARQUEE BAR ── */
+    .marquee-bar { background: var(--blue); padding: 14px 0; overflow: hidden; display: flex; }
+    .marquee-track { display: flex; gap: 0; animation: marquee 28s linear infinite; white-space: nowrap; }
+    .marquee-item { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: white; font-weight: 500; padding: 0 40px; }
+    .marquee-dot { color: var(--gold); padding: 0 10px; font-size: 0.5rem; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 100px 60px; }
+    .section-eyebrow {
+      font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--blue); font-weight: 600; margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400; line-height: 1.15;
+      color: var(--navy); margin-bottom: 20px;
+    }
+    .section-subtitle {
+      font-size: 0.95rem; color: var(--text-muted);
+      line-height: 1.8; max-width: 560px; font-weight: 300;
+    }
+
+    /* ── HIGHLIGHTS ROW ── */
+    .highlights { background: var(--off-white); }
+    .highlights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
+    .highlight-card {
+      background: white; padding: 44px 36px;
+      border: 1px solid var(--border); border-radius: 8px;
+      transition: all 0.4s; position: relative; overflow: hidden; text-decoration: none; display: block;
+    }
+    .highlight-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--blue), var(--gold));
+      transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+    }
+    .highlight-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+    .highlight-card:hover::before { transform: scaleX(1); }
+    .highlight-icon { font-size: 2rem; margin-bottom: 20px; }
+    .highlight-title {
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 500;
+      color: var(--navy); margin-bottom: 14px;
+    }
+    .highlight-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; margin-bottom: 20px; }
+    .highlight-link {
+      font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--blue); font-weight: 600; display: flex; align-items: center; gap: 8px;
+    }
+    .highlight-link::after { content: '\2192'; transition: transform 0.3s; }
+    .highlight-card:hover .highlight-link::after { transform: translateX(4px); }
+
+    /* ── ABOUT SECTION ── */
+    #about { background: white; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 60px; align-items: start; margin-top: 40px;
+    }
+    .about-photo-wrapper { position: relative; }
+    .about-photo-placeholder {
+      width: 100%; aspect-ratio: 3/4;
+      background: var(--ice); border-radius: 8px; overflow: hidden;
+      position: relative; border: 1px solid var(--border);
+    }
+    .about-photo-placeholder.has-photo { background: none; }
+    .about-photo-placeholder img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-accent-box {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--blue); color: white; padding: 20px 28px;
+      border-radius: 6px; text-align: center;
+      box-shadow: 0 8px 30px rgba(27,95,170,0.3); z-index: 2;
+    }
+    .about-accent-box .accent-num {
+      font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 500; line-height: 1; margin-bottom: 4px;
+    }
+    .about-accent-box .accent-label {
+      font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7;
+    }
+    .about-text h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400;
+      color: var(--navy); margin-bottom: 24px;
+    }
+    .about-text p {
+      font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; font-weight: 300; margin-bottom: 20px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    /* Awards */
+    .awards-section { background: var(--off-white); }
+    .awards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 50px; }
+    .award-card {
+      background: white; border: 1px solid var(--border); border-radius: 8px;
+      padding: 36px 28px; text-align: center; transition: all 0.4s;
+      position: relative; overflow: hidden;
+    }
+    .award-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--gold));
+      transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+    }
+    .award-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+    .award-card:hover::before { transform: scaleX(1); }
+    .award-icon { font-size: 2.4rem; margin-bottom: 18px; }
+    .award-title {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 500;
+      color: var(--navy); margin-bottom: 12px;
+    }
+    .award-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+    /* Stats bar */
+    .stats-section { background: var(--navy); padding: 80px 60px; }
+    .stats-row {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1100px; margin: 0 auto; gap: 20px;
+    }
+    .stat-item { text-align: center; flex: 1; }
+    .stat-number {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4vw, 3.4rem);
+      font-weight: 400; color: var(--gold-soft); line-height: 1; margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Neighborhoods */
+    .neighborhoods-section { background: var(--white); }
+    .chip-grid { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+    .chip {
+      display: inline-block; padding: 12px 28px;
+      background: var(--off-white); border: 1px solid var(--border); border-radius: 50px;
+      font-size: 0.85rem; font-weight: 500; color: var(--navy); transition: all 0.3s; cursor: default;
+    }
+    .chip:hover {
+      background: var(--blue); color: white; border-color: var(--blue);
+      transform: translateY(-2px); box-shadow: 0 4px 16px rgba(27,95,170,0.2);
+    }
+
+    /* Philosophy quote */
+    .quote-section { background: var(--off-white); text-align: center; padding: 100px 60px; }
+    .quote-block { max-width: 780px; margin: 0 auto; }
+    .quote-text {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      font-style: italic; font-weight: 400; line-height: 1.7; color: var(--navy);
+      margin-bottom: 28px; position: relative;
+    }
+    .quote-text::before {
+      content: '\201C'; font-family: 'Playfair Display', serif; font-size: 5rem;
+      color: var(--blue); opacity: 0.15; position: absolute; top: -40px; left: -10px; line-height: 1;
+    }
+    .quote-author {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600;
+    }
+
+    /* ── REVIEWS SECTION ── */
+    .agg-bar {
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 40px 60px; display: flex; align-items: center; justify-content: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .agg-score { display: flex; align-items: center; gap: 16px; }
+    .agg-number {
+      font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 400;
+      color: var(--navy); line-height: 1;
+    }
+    .agg-stars-wrap { display: flex; flex-direction: column; gap: 4px; }
+    .agg-stars { display: flex; gap: 3px; color: var(--gold); font-size: 1.3rem; }
+    .agg-count { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; }
+    .agg-divider { width: 1px; height: 48px; background: var(--border); }
+    .agg-platforms { display: flex; gap: 10px; flex-wrap: wrap; }
+    .platform-badge {
+      font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 600;
+      background: var(--ice); padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border);
+    }
+
+    .reviews-section { background: var(--navy); padding: 100px 60px; }
+    .reviews-section .section-eyebrow { color: var(--gold); text-align: center; }
+    .reviews-section .section-title { color: var(--white); text-align: center; }
+    .reviews-section .section-title em { color: var(--blue-light); font-style: italic; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 60px; }
+    .review-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 40px 36px; transition: all 0.4s;
+    }
+    .review-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-4px); }
+    .review-stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-bottom: 20px; }
+    .review-text {
+      font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.85;
+      font-weight: 300; margin-bottom: 24px; font-style: italic;
+    }
+    .review-author { display: flex; align-items: center; gap: 12px; }
+    .review-author-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.82rem; color: white; font-weight: 600; flex-shrink: 0;
+    }
+    .review-author-name { font-size: 0.88rem; color: var(--white); font-weight: 600; margin-bottom: 2px; }
+    .review-author-role { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* ── HOME VALUATION CTA ── */
+    .valuation-banner {
+      background: linear-gradient(135deg, rgba(27,95,170,0.92) 0%, rgba(12,29,54,0.95) 100%), url('http://realestatewithdoug.com/wp-content/uploads/2017/07/a-bike-trail2-1.jpg') center/cover;
+      padding: 80px 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    }
+    .valuation-text h2 {
+      font-family: 'Playfair Display', serif; font-size: 2.2rem; color: white; font-weight: 400; margin-bottom: 12px;
+    }
+    .valuation-text p {
+      font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 480px; font-weight: 300;
+    }
+    .btn-gold {
+      display: inline-block; font-size: 0.7rem; letter-spacing: 0.18em;
+      text-transform: uppercase; background: var(--gold); color: white;
+      padding: 16px 40px; text-decoration: none; font-weight: 600;
+      border: 2px solid var(--gold); border-radius: 4px;
+      transition: all 0.3s; white-space: nowrap;
+    }
+    .btn-gold:hover { background: transparent; color: var(--gold); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--off-white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 60px; }
+    .contact-info-block { display: flex; flex-direction: column; gap: 28px; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-icon svg { width: 18px; height: 18px; fill: white; }
+    .contact-item-label {
+      font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 4px;
+    }
+    .contact-item-value { font-size: 0.95rem; color: var(--navy); font-weight: 500; }
+    .contact-item-value a { color: var(--navy); text-decoration: none; transition: color 0.3s; }
+    .contact-item-value a:hover { color: var(--blue); }
+    .contact-social { display: flex; gap: 12px; margin-top: 12px; }
+    .social-link {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--navy); display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s; text-decoration: none;
+    }
+    .social-link:hover { background: var(--blue); transform: translateY(-2px); }
+    .social-link svg { width: 18px; height: 18px; fill: white; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .form-row { display: flex; gap: 18px; }
+    .form-group { flex: 1; display: flex; flex-direction: column; }
+    .form-group label {
+      font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 8px; font-weight: 500;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; padding: 14px 18px;
+      border: 1px solid var(--border); border-radius: 6px;
+      background: white; color: var(--text); transition: border-color 0.3s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--blue); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group input.error, .form-group textarea.error { border-color: #d64545; }
+    .error-msg { font-size: 0.72rem; color: #d64545; margin-top: 4px; display: none; }
+    .error-msg.show { display: block; }
+    .form-submit {
+      font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.18em;
+      text-transform: uppercase; background: var(--blue); color: white;
+      border: 2px solid var(--blue); padding: 16px 40px; font-weight: 600;
+      cursor: pointer; transition: all 0.3s; border-radius: 4px; align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--navy); border-color: var(--navy); }
+    .form-success { display: none; text-align: center; padding: 60px 20px; }
+    .form-success.show { display: flex; flex-direction: column; align-items: center; }
+    .form-success-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--blue); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+    }
+    .form-success-icon svg { width: 28px; height: 28px; fill: white; }
+    .form-success h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 10px;
+    }
+    .form-success p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); padding: 60px 60px 30px; }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; color: white; font-weight: 600; margin-bottom: 12px;
+    }
+    .footer-brand span { color: var(--blue-light); }
+    .footer-tagline { font-size: 0.8rem; color: rgba(255,255,255,0.35); line-height: 1.6; max-width: 280px; font-weight: 300; }
+    .footer-links-group h4 {
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px; font-weight: 600;
+    }
+    .footer-links-group a {
+      display: block; font-size: 0.82rem; color: rgba(255,255,255,0.45);
+      text-decoration: none; margin-bottom: 10px; transition: color 0.3s;
+    }
+    .footer-links-group a:hover { color: white; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 30px; gap: 20px; flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 0.68rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.3s; }
+    .footer-legal a:hover { color: white; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(12,29,54,0.7); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; animation: fadeIn 0.3s ease;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: white; border-radius: 10px; max-width: 600px; width: 90%; max-height: 85vh;
+      overflow-y: auto; position: relative; animation: slideUp 0.3s ease;
+    }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 28px 32px 0; }
+    .modal-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); font-weight: 500; }
+    .modal-close {
+      width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border);
+      background: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s; font-size: 1.1rem; color: var(--text-muted);
+    }
+    .modal-close:hover { background: var(--ice); color: var(--navy); }
+    .modal-body { padding: 24px 32px 32px; font-size: 0.88rem; color: var(--text-muted); line-height: 1.85; }
+    .modal-body h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); margin: 20px 0 10px; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeLeft { from { opacity:0; transform:translateX(-40px); } to { opacity:1; transform:none; } }
+    @keyframes fadeRight { from { opacity:0; transform:translateX(40px); } to { opacity:1; transform:none; } }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes slideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+    @keyframes marquee { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+    @keyframes spin { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      section { padding: 70px 40px; }
+      .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr 1.2fr; gap: 40px; }
+      .awards-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-row { flex-wrap: wrap; }
+      .stat-item { min-width: 140px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      nav.scrolled { padding: 12px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.mobile-open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: white; padding: 24px; gap: 18px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 120px 32px 60px; }
+      .hero-right { min-height: 50vh; }
+      .hero-stat-block { bottom: 24px; left: 24px; padding: 18px 24px; }
+      .hero-badge, .hero-badge-inner { top: 30px; right: 24px; width: 90px; height: 90px; }
+      .badge-num { font-size: 1.2rem; }
+      section { padding: 60px 24px; }
+      .highlights-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo-placeholder { max-width: 400px; }
+      .about-accent-box { bottom: -12px; right: -8px; padding: 16px 20px; }
+      .awards-grid { grid-template-columns: 1fr; }
+      .stats-section { padding: 60px 24px; }
+      .stats-row { flex-wrap: wrap; gap: 30px; }
+      .stat-item { min-width: 120px; flex: 0 0 calc(50% - 15px); }
+      .reviews-section { padding: 60px 24px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .agg-bar { padding: 30px 24px; gap: 24px; flex-direction: column; }
+      .agg-divider { width: 60px; height: 1px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { flex-direction: column; }
+      .valuation-banner { flex-direction: column; padding: 60px 24px; text-align: center; }
+      .quote-section { padding: 60px 24px; }
+      .footer-top { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Doug <span>Reynolds</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="sold.html">Sold</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Coldwell Banker &mdash; Sacramento, CA</div>
+      <h1 class="hero-name">Doug<br><em>Reynolds</em></h1>
+      <div class="hero-tagline">Never too busy for your referrals</div>
+      <p class="hero-desc">
+        Guiding Sacramento families through the biggest transaction of their lives since 2006. Whether you're buying your first home or selling to start your next chapter, I'm here to make it seamless.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Schedule a Call</a>
+        <a href="services.html" class="btn-secondary">What I Do</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-bg">
+        <div class="hero-house-visual"></div>
+        <div class="hero-stat-block">
+          <div class="stat-num">600+</div>
+          <div class="stat-label-hero">Homes Sold</div>
+        </div>
+        <div class="hero-badge"></div>
+        <div class="hero-badge-inner">
+          <div class="badge-num">Top 5%</div>
+          <div class="badge-text">Sacramento<br>Realtor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span class="marquee-item">600+ Homes Sold</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">Top 5% Sacramento Realtor</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">College-Glen Expert</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">Free Home Valuation</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">679+ Educational Videos</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">290+ Client Reviews</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">Coldwell Banker Realty</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">600+ Homes Sold</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">Top 5% Sacramento Realtor</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">College-Glen Expert</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">Free Home Valuation</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">679+ Educational Videos</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">290+ Client Reviews</span><span class="marquee-dot">&bull;</span>
+      <span class="marquee-item">Coldwell Banker Realty</span><span class="marquee-dot">&bull;</span>
+    </div>
+  </div>
+
+  <!-- HIGHLIGHTS ROW -->
+  <section class="highlights">
+    <div class="section-eyebrow">Explore</div>
+    <h2 class="section-title">How Can I <em>Help?</em></h2>
+    <p class="section-subtitle">From buying your first home to selling for top dollar, I simplify real estate for Sacramento families.</p>
+    <div class="highlights-grid">
+      <a href="services.html" class="highlight-card">
+        <div class="highlight-icon">&#127968;</div>
+        <div class="highlight-title">Full-Service Real Estate</div>
+        <p class="highlight-desc">Buying, selling, valuations, relocation, and investment — 600+ transactions of proven expertise across 4 Sacramento-area counties.</p>
+        <div class="highlight-link">View Services</div>
+      </a>
+      <a href="sold.html" class="highlight-card">
+        <div class="highlight-icon">&#128176;</div>
+        <div class="highlight-title">Recently Sold</div>
+        <p class="highlight-desc">See the results: homes sold 43% quicker than average, with strategic pricing that's earned clients up to $416K over asking.</p>
+        <div class="highlight-link">See Sold Homes</div>
+      </a>
+      <a href="#reviews" class="highlight-card">
+        <div class="highlight-icon">&#11088;</div>
+        <div class="highlight-title">290+ Client Reviews</div>
+        <p class="highlight-desc">4.9 stars across Google, Zillow, Realtor.com, and more. Read what past clients say about working with Doug.</p>
+        <div class="highlight-link">Read Reviews</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="section-eyebrow">About Doug</div>
+    <h2 class="section-title">It's Not Just About Homes. It's About <em>People.</em></h2>
+    <div class="about-grid">
+      <div class="about-photo-wrapper">
+        <div class="about-photo-placeholder has-photo">
+          <img src="https://images.cloud.realogyprod.com/agents/CBR/P00200000FSjyfzdIOl4krgiHYbtVCby4iHoktS4/P01600000FR40uNyqWnC8S5JZmCsQLtVdSrUVwMv.jpg" alt="Doug Reynolds - Sacramento Realtor" />
+        </div>
+        <div class="about-accent-box">
+          <div class="accent-num">Since '06</div>
+          <div class="accent-label">Licensed Realtor</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <h3>Finding Your Why</h3>
+        <p>Real estate isn't just about properties &mdash; it's about the people inside them. That's why I start every client relationship by finding your "Why." What's driving this move? What does your ideal life look like? When I understand your story, I can find the right chapter.</p>
+        <p>I graduated from CSU Sacramento in 2006 with a degree in Real Estate and Land Use Affairs, and I've been mastering the Sacramento market ever since. I consistently sell 25-35 homes per year across Sacramento, Placer, Yolo, and El Dorado Counties, with 600+ total homes closed to date.</p>
+        <p>I'm recognized as a trusted listing agent, move-up buyer specialist, and College-Glen neighborhood expert &mdash; a community I've served since 2009. I assemble a team of trusted professionals &mdash; lenders, inspectors, contractors &mdash; so every detail is covered. I'm not just your agent. I'm your advocate, your advisor, and your resource for life.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS & CREDENTIALS -->
+  <section class="awards-section">
+    <div class="section-eyebrow">Recognition</div>
+    <h2 class="section-title">Awards &amp; Credentials</h2>
+    <div class="awards-grid">
+      <div class="award-card">
+        <div class="award-icon">&#127942;</div>
+        <div class="award-title">International President's Circle</div>
+        <p class="award-desc">Coldwell Banker's prestigious recognition for top-performing agents worldwide.</p>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">&#129351;</div>
+        <div class="award-title">Master's Club</div>
+        <p class="award-desc">Sacramento Association of Realtors designation for sustained excellence in real estate.</p>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">&#128202;</div>
+        <div class="award-title">Top 5% Sacramento Realtor</div>
+        <p class="award-desc">Consistently ranked among the top-performing real estate professionals in the Sacramento region.</p>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">&#128176;</div>
+        <div class="award-title">Dave Ramsey Financial Peace Coordinator</div>
+        <p class="award-desc">Certified Financial Peace University coordinator (2017), helping clients make wise financial decisions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-section">
+    <div class="stats-row">
+      <div class="stat-item"><div class="stat-number">600+</div><div class="stat-label">Homes Closed</div></div>
+      <div class="stat-item"><div class="stat-number">679+</div><div class="stat-label">Videos Published</div></div>
+      <div class="stat-item"><div class="stat-number">290+</div><div class="stat-label">Public Reviews</div></div>
+      <div class="stat-item"><div class="stat-number">4.9</div><div class="stat-label">Star Rating</div></div>
+      <div class="stat-item"><div class="stat-number">43%</div><div class="stat-label">Quicker Sales</div></div>
+    </div>
+  </div>
+
+  <!-- NEIGHBORHOODS -->
+  <section class="neighborhoods-section">
+    <div class="section-eyebrow">Local Expert</div>
+    <h2 class="section-title">Sacramento Neighborhoods I Know Best</h2>
+    <div class="chip-grid">
+      <span class="chip">College Greens</span>
+      <span class="chip">Glenbrook</span>
+      <span class="chip">Arden Park Vista</span>
+      <span class="chip">Fair Oaks</span>
+      <span class="chip">Folsom</span>
+      <span class="chip">Rancho Cordova</span>
+      <span class="chip">Carmichael</span>
+      <span class="chip">Rocklin</span>
+      <span class="chip">Roseville</span>
+      <span class="chip">El Dorado Hills</span>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY QUOTE -->
+  <div class="quote-section">
+    <div class="quote-block">
+      <p class="quote-text">I don't just help people buy and sell houses. I help them find their 'Why' &mdash; the reason behind the move, the dream behind the door. When you start with purpose, every decision becomes clearer.</p>
+      <div class="quote-author">&mdash; Doug Reynolds</div>
+    </div>
+  </div>
+
+  <!-- REVIEW AGGREGATION BAR -->
+  <div class="agg-bar" id="reviews">
+    <div class="agg-score">
+      <div class="agg-number">4.9</div>
+      <div class="agg-stars-wrap">
+        <div class="agg-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="agg-count">290+ Reviews</div>
+      </div>
+    </div>
+    <div class="agg-divider"></div>
+    <div class="agg-platforms">
+      <span class="platform-badge">Google</span>
+      <span class="platform-badge">Zillow</span>
+      <span class="platform-badge">Realtor.com</span>
+      <span class="platform-badge">Facebook</span>
+      <span class="platform-badge">Nextdoor</span>
+    </div>
+  </div>
+
+  <!-- REVIEWS GRID -->
+  <section class="reviews-section">
+    <div class="section-eyebrow">Testimonials</div>
+    <h2 class="section-title">Real Stories, Real <em>Results</em></h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Doug made us feel like his only clients. He was always available, always patient, and his knowledge of Sacramento neighborhoods saved us from making a costly mistake. We couldn't be happier in our new home."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">M&amp;S</div>
+          <div><div class="review-author-name">Marcus &amp; Sarah T.</div><div class="review-author-role">First-Time Buyers</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"We were nervous about selling after 20 years. Doug walked us through every step, kept us informed, and got us $30K over asking. His team of professionals made the whole process painless."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">L&amp;R</div>
+          <div><div class="review-author-name">Linda &amp; Robert K.</div><div class="review-author-role">Home Sellers</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Doug's educational videos are what drew me in &mdash; but his genuine care for his clients is what made me stay. He found my 'Why' before he found my house, and that made all the difference."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">JM</div>
+          <div><div class="review-author-name">Jessica M.</div><div class="review-author-role">Relocation Client</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"We've bought and sold three homes with Doug over the past decade. His market knowledge is unmatched, and he treats every transaction like it's his first &mdash; with energy, dedication, and integrity."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">D&amp;K</div>
+          <div><div class="review-author-name">David &amp; Karen P.</div><div class="review-author-role">Repeat Clients</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Doug helped us navigate a complicated relocation from out of state. He gave us virtual neighborhood tours, connected us with local resources, and made Sacramento feel like home before we even arrived."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">MR</div>
+          <div><div class="review-author-name">Michael R.</div><div class="review-author-role">Relocation Buyer</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"As a first-time investor, I had a lot of questions. Doug patiently walked me through cap rates, rental analysis, and property management. I now own two rental properties thanks to his guidance."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">AL</div>
+          <div><div class="review-author-name">Anthony L.</div><div class="review-author-role">Investor</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Doug sold our home in College-Glen in just 8 days &mdash; for $45K over asking! His pricing strategy and marketing were spot-on. We couldn't have asked for a better experience."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">S&amp;C</div>
+          <div><div class="review-author-name">Sandra &amp; Chris H.</div><div class="review-author-role">Home Sellers</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"What sets Doug apart is his commitment to education. He doesn't just tell you what to do &mdash; he explains why. I felt empowered and informed throughout the entire buying process."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">RW</div>
+          <div><div class="review-author-name">Rachel W.</div><div class="review-author-role">First-Time Buyer</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME VALUATION CTA -->
+  <div class="valuation-banner">
+    <div class="valuation-text">
+      <h2>What's Your Home Worth?</h2>
+      <p>Get a free, no-obligation comparative market analysis from a Sacramento expert. Know your equity position and make smarter decisions about your next move.</p>
+    </div>
+    <a href="#contact" class="btn-gold">Get Free Valuation</a>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-eyebrow">Get in Touch</div>
+    <h2 class="section-title">Let's <em>Talk</em></h2>
+    <p class="section-subtitle">Ready to make a move? Have a question? I'd love to hear from you. Reach out anytime — I'm never too busy for you.</p>
+    <div class="contact-grid">
+      <div class="contact-info-block">
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/></svg></div>
+          <div><div class="contact-item-label">Phone</div><div class="contact-item-value"><a href="tel:+19164948441">(916) 494-8441</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <div><div class="contact-item-label">Email</div><div class="contact-item-value"><a href="mailto:DougReynoldsRealEstate@gmail.com">DougReynoldsRealEstate@gmail.com</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></div>
+          <div><div class="contact-item-label">Office</div><div class="contact-item-value">2277 Fair Oaks Blvd. Ste. 440<br>Sacramento, CA 95825</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+          <div><div class="contact-item-label">License</div><div class="contact-item-value">BRE #01734464</div></div>
+        </div>
+        <div class="contact-social">
+          <a href="https://www.facebook.com/dougreynoldsrealestate" target="_blank" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z"/></svg></a>
+          <a href="https://www.youtube.com/@reynoldsrealestate" target="_blank" class="social-link" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42A2.78 2.78 0 0020.6 4.5C18.88 4 12 4 12 4s-6.88 0-8.6.5A2.78 2.78 0 001.46 6.42 29.94 29.94 0 001 12a29.94 29.94 0 00.46 5.58A2.78 2.78 0 003.4 19.5C5.12 20 12 20 12 20s6.88 0 8.6-.5a2.78 2.78 0 001.94-1.92A29.94 29.94 0 0023 12a29.94 29.94 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a>
+          <a href="https://www.instagram.com/dougreynoldsrealestate" target="_blank" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group"><label for="fname">First Name *</label><input type="text" id="fname" placeholder="John" required /><div class="error-msg" id="fnameErr">Please enter your first name</div></div>
+            <div class="form-group"><label for="lname">Last Name *</label><input type="text" id="lname" placeholder="Smith" required /><div class="error-msg" id="lnameErr">Please enter your last name</div></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label for="email">Email *</label><input type="email" id="email" placeholder="john@example.com" required /><div class="error-msg" id="emailErr">Please enter a valid email</div></div>
+            <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" placeholder="(916) 555-1234" /></div>
+          </div>
+          <div class="form-group">
+            <label for="interest">I'm Interested In</label>
+            <select id="interest">
+              <option value="">Select one...</option>
+              <option value="buying">Buying a Home</option>
+              <option value="selling">Selling My Home</option>
+              <option value="valuation">Free Home Valuation</option>
+              <option value="investing">Investment Property</option>
+              <option value="relocating">Relocating to Sacramento</option>
+              <option value="other">Something Else</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="message">Message *</label><textarea id="message" placeholder="Tell me about what you're looking for..." required></textarea><div class="error-msg" id="msgErr">Please enter a message</div></div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Message Sent!</h3>
+          <p>Thanks for reaching out. I'll get back to you within 24 hours — usually much sooner.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Doug <span>Reynolds</span></div>
+        <p class="footer-tagline">Sacramento real estate expert since 2006. Never too busy for your referrals.</p>
+      </div>
+      <div class="footer-links-group">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="sold.html">Recently Sold</a>
+        <a href="resources.html">Resources</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-links-group">
+        <h4>Services</h4>
+        <a href="services.html">Buy a Home</a>
+        <a href="services.html">Sell a Home</a>
+        <a href="#contact">Home Valuation</a>
+        <a href="https://sacramentorealestateblog.com" target="_blank">Read the Blog</a>
+      </div>
+      <div class="footer-links-group">
+        <h4>Connect</h4>
+        <a href="https://www.facebook.com/dougreynoldsrealestate" target="_blank">Facebook</a>
+        <a href="https://www.youtube.com/@reynoldsrealestate" target="_blank">YouTube</a>
+        <a href="https://www.instagram.com/dougreynoldsrealestate" target="_blank">Instagram</a>
+        <a href="https://sacramentorealestateblog.com" target="_blank">Blog</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Doug Reynolds Real Estate Ltd. BRE #01734464. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>
+        <a href="#" onclick="openModal('termsModal'); return false;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODALS -->
+  <div class="modal-overlay" id="privacyModal">
+    <div class="modal">
+      <div class="modal-header"><div class="modal-title">Privacy Policy</div><button class="modal-close" onclick="closeModal('privacyModal')">&times;</button></div>
+      <div class="modal-body">
+        <p>Doug Reynolds Real Estate Ltd. ("we," "us," "our") respects your privacy. This policy explains how we collect, use, and protect information submitted through this website.</p>
+        <h3>Information We Collect</h3><p>We collect information you voluntarily provide through our contact form, including your name, email address, phone number, and message content. We may also collect standard web analytics data such as page views and device type.</p>
+        <h3>How We Use Your Information</h3><p>Your information is used solely to respond to your real estate inquiries, provide requested services, and maintain communication about your transaction or interests. We will never sell or share your personal information with third parties for marketing purposes.</p>
+        <h3>Data Protection</h3><p>We implement reasonable security measures to protect your personal information. However, no method of electronic transmission is 100% secure.</p>
+        <h3>Contact</h3><p>For privacy questions, contact us at DougReynoldsRealEstate@gmail.com or (916) 494-8441.</p>
+      </div>
+    </div>
+  </div>
+  <div class="modal-overlay" id="termsModal">
+    <div class="modal">
+      <div class="modal-header"><div class="modal-title">Terms of Service</div><button class="modal-close" onclick="closeModal('termsModal')">&times;</button></div>
+      <div class="modal-body">
+        <p>By using this website, you agree to the following terms and conditions.</p>
+        <h3>Disclaimer</h3><p>The information on this website is for general informational purposes only. While we strive for accuracy, we make no guarantees about the completeness or reliability of any information. Real estate market conditions change rapidly; always consult directly with Doug Reynolds for current advice.</p>
+        <h3>No Guaranteed Outcomes</h3><p>Testimonials and past results do not guarantee future outcomes. Every real estate transaction is unique and results vary based on market conditions, property specifics, and other factors.</p>
+        <h3>Licensing</h3><p>Doug Reynolds is a licensed real estate agent in the state of California. BRE License #01734464. Brokered by Coldwell Banker.</p>
+        <h3>Contact</h3><p>Questions about these terms? Contact us at DougReynoldsRealEstate@gmail.com or (916) 494-8441.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Nav scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 200) current = s.id;
+      });
+      // Also check non-section anchors
+      const reviewsEl = document.getElementById('reviews');
+      if (reviewsEl && window.scrollY >= reviewsEl.offsetTop - 200) current = 'reviews';
+      navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+      });
+      // Keep Home active if at top
+      const homeLink = document.querySelector('.nav-links a[href="index.html"]');
+      if (window.scrollY < 400 && homeLink) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        homeLink.classList.add('active');
+      }
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navLinksEl = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinksEl.classList.toggle('mobile-open');
+    });
+    navLinksEl.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinksEl.classList.remove('mobile-open');
+      });
+    });
+
+    // Contact form validation
+    const form = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let valid = true;
+      const fname = document.getElementById('fname');
+      const lname = document.getElementById('lname');
+      const email = document.getElementById('email');
+      const message = document.getElementById('message');
+      [fname, lname, email, message].forEach(f => f.classList.remove('error'));
+      document.querySelectorAll('.error-msg').forEach(m => m.classList.remove('show'));
+      if (!fname.value.trim()) { fname.classList.add('error'); document.getElementById('fnameErr').classList.add('show'); valid = false; }
+      if (!lname.value.trim()) { lname.classList.add('error'); document.getElementById('lnameErr').classList.add('show'); valid = false; }
+      if (!email.value.trim() || !email.value.includes('@') || !email.value.includes('.')) { email.classList.add('error'); document.getElementById('emailErr').classList.add('show'); valid = false; }
+      if (!message.value.trim()) { message.classList.add('error'); document.getElementById('msgErr').classList.add('show'); valid = false; }
+      if (valid) { form.style.display = 'none'; formSuccess.classList.add('show'); }
+    });
+
+    // Modals
+    function openModal(id) { document.getElementById(id).classList.add('show'); document.body.style.overflow = 'hidden'; }
+    function closeModal(id) { document.getElementById(id).classList.remove('show'); document.body.style.overflow = ''; }
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) { overlay.classList.remove('show'); document.body.style.overflow = ''; } });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { document.querySelectorAll('.modal-overlay.show').forEach(m => { m.classList.remove('show'); document.body.style.overflow = ''; }); }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Client Reviews — Doug Reynolds | Sacramento Real Estate</title>
+  <meta name="description" content="Read 290+ five-star reviews from satisfied clients of Doug Reynolds, Sacramento Realtor at Coldwell Banker. Google, Zillow, Realtor.com and more."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0C1D36;
+      --navy-light: #152A4A;
+      --white: #FFFFFF;
+      --off-white: #F8F9FB;
+      --ice: #EEF1F6;
+      --blue: #1B5FAA;
+      --blue-light: #2E7AD4;
+      --gold: #C9A84C;
+      --gold-soft: #D4B966;
+      --text: #1A1E2C;
+      --text-muted: #6B7186;
+      --border: rgba(27,95,170,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 60px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    nav.scrolled {
+      padding: 14px 60px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 600;
+      color: var(--navy); text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--blue); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none; font-weight: 500;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+    .nav-links a.active::after {
+      content: ''; position: absolute; bottom: -6px; left: 0; right: 0;
+      height: 2px; background: var(--blue); border-radius: 1px;
+    }
+    .nav-cta {
+      font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--white); background: var(--blue); border: 1px solid var(--blue);
+      padding: 10px 26px; text-decoration: none; font-weight: 600;
+      transition: all 0.3s; border-radius: 4px;
+    }
+    .nav-cta:hover { background: var(--navy); border-color: var(--navy); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; cursor: pointer; background: none; border: none;
+      flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--navy);
+      transition: all 0.3s; border-radius: 1px;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 100px 60px; }
+    .section-eyebrow {
+      font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--blue); font-weight: 600; margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400; line-height: 1.15;
+      color: var(--navy); margin-bottom: 20px;
+    }
+    .section-subtitle {
+      font-size: 0.95rem; color: var(--text-muted);
+      line-height: 1.8; max-width: 560px; font-weight: 300;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-block; font-size: 0.7rem; letter-spacing: 0.18em;
+      text-transform: uppercase; background: var(--blue); color: white;
+      padding: 16px 36px; text-decoration: none; font-weight: 600;
+      transition: all 0.3s; border: 2px solid var(--blue); border-radius: 4px;
+    }
+    .btn-primary:hover { background: transparent; color: var(--blue-light); }
+    .btn-gold {
+      display: inline-block; font-size: 0.7rem; letter-spacing: 0.18em;
+      text-transform: uppercase; background: var(--gold); color: white;
+      padding: 16px 40px; text-decoration: none; font-weight: 600;
+      border: 2px solid var(--gold); border-radius: 4px;
+      transition: all 0.3s; white-space: nowrap;
+    }
+    .btn-gold:hover { background: transparent; color: var(--gold); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--navy);
+      padding: 160px 60px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(27,95,170,0.15) 0%, transparent 70%);
+    }
+    .page-hero-eyebrow {
+      font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px; font-weight: 600;
+      position: relative;
+    }
+    .page-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 400; line-height: 1.12;
+      color: var(--white); margin-bottom: 20px;
+      position: relative;
+    }
+    .page-hero-title em {
+      font-style: italic; color: var(--blue-light);
+    }
+    .page-hero-subtitle {
+      font-size: 1rem; color: rgba(255,255,255,0.5);
+      line-height: 1.8; max-width: 560px; margin: 0 auto;
+      font-weight: 300; position: relative;
+    }
+
+    /* ── REVIEW AGGREGATION BAR ── */
+    .agg-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 60px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .agg-score {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .agg-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem; font-weight: 400;
+      color: var(--navy); line-height: 1;
+    }
+    .agg-stars-wrap {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .agg-stars {
+      display: flex; gap: 3px;
+      color: var(--gold); font-size: 1.3rem;
+    }
+    .agg-count {
+      font-size: 0.82rem; color: var(--text-muted); font-weight: 500;
+    }
+    .agg-divider {
+      width: 1px; height: 48px;
+      background: var(--border);
+    }
+    .agg-platforms {
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .platform-badge {
+      font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); font-weight: 600;
+      background: var(--ice);
+      padding: 8px 16px; border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── REVIEWS GRID ── */
+    .reviews-section {
+      background: var(--navy);
+      padding: 100px 60px;
+    }
+    .reviews-section .section-eyebrow {
+      color: var(--gold); text-align: center;
+    }
+    .reviews-section .section-title {
+      color: var(--white); text-align: center;
+    }
+    .reviews-section .section-title em {
+      color: var(--blue-light); font-style: italic;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 60px;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 40px 36px;
+      transition: all 0.4s;
+    }
+    .review-card:hover {
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-4px);
+    }
+    .review-stars {
+      color: var(--gold); font-size: 1rem;
+      letter-spacing: 2px; margin-bottom: 20px;
+    }
+    .review-text {
+      font-size: 0.95rem; color: rgba(255,255,255,0.6);
+      line-height: 1.85; font-weight: 300;
+      margin-bottom: 24px; font-style: italic;
+    }
+    .review-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .review-author-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.82rem; color: white; font-weight: 600;
+      flex-shrink: 0;
+    }
+    .review-author-name {
+      font-size: 0.88rem; color: var(--white); font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .review-author-role {
+      font-size: 0.72rem; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+
+    /* ── PLATFORM LINKS ── */
+    .platforms-section {
+      background: var(--off-white);
+      padding: 100px 60px;
+      text-align: center;
+    }
+    .platforms-section .section-title {
+      text-align: center;
+    }
+    .platforms-grid {
+      display: flex; justify-content: center;
+      gap: 24px; margin-top: 50px; flex-wrap: wrap;
+    }
+    .platform-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px 36px;
+      text-decoration: none;
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      transition: all 0.4s;
+      min-width: 170px;
+      position: relative; overflow: hidden;
+    }
+    .platform-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--blue), var(--gold));
+      transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+    }
+    .platform-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+    }
+    .platform-card:hover::before { transform: scaleX(1); }
+    .platform-card-icon {
+      font-size: 2rem;
+    }
+    .platform-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 500;
+      color: var(--navy);
+    }
+    .platform-card-action {
+      font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--blue); font-weight: 600;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .platform-card-action::after {
+      content: '\2192'; transition: transform 0.3s;
+    }
+    .platform-card:hover .platform-card-action::after { transform: translateX(4px); }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(27,95,170,0.92) 0%, rgba(12,29,54,0.95) 100%);
+      padding: 80px 60px;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: white; font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .cta-banner p {
+      font-size: 0.95rem; color: rgba(255,255,255,0.55);
+      line-height: 1.8; max-width: 520px; margin: 0 auto 36px;
+      font-weight: 300;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy); padding: 60px 60px 30px;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 40px; padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: white; font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .footer-brand span { color: var(--blue-light); }
+    .footer-tagline {
+      font-size: 0.8rem; color: rgba(255,255,255,0.35);
+      line-height: 1.6; max-width: 280px; font-weight: 300;
+    }
+    .footer-links-group h4 {
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px; font-weight: 600;
+    }
+    .footer-links-group a {
+      display: block; font-size: 0.82rem; color: rgba(255,255,255,0.45);
+      text-decoration: none; margin-bottom: 10px; transition: color 0.3s;
+    }
+    .footer-links-group a:hover { color: white; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 30px; gap: 20px; flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: 0.72rem; color: rgba(255,255,255,0.25);
+    }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a {
+      font-size: 0.68rem; color: rgba(255,255,255,0.3);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .footer-legal a:hover { color: white; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(12,29,54,0.7); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: white; border-radius: 10px;
+      max-width: 600px; width: 90%; max-height: 85vh;
+      overflow-y: auto; position: relative;
+      animation: slideUp 0.3s ease;
+    }
+    .modal-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 32px 0;
+    }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--navy); font-weight: 500;
+    }
+    .modal-close {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid var(--border); background: none;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s; font-size: 1.1rem; color: var(--text-muted);
+    }
+    .modal-close:hover { background: var(--ice); color: var(--navy); }
+    .modal-body {
+      padding: 24px 32px 32px;
+      font-size: 0.88rem; color: var(--text-muted);
+      line-height: 1.85;
+    }
+    .modal-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--navy); margin: 20px 0 10px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeLeft { from { opacity:0; transform:translateX(-40px); } to { opacity:1; transform:none; } }
+    @keyframes fadeRight { from { opacity:0; transform:translateX(40px); } to { opacity:1; transform:none; } }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes slideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      section { padding: 70px 40px; }
+      .page-hero { padding: 140px 40px 80px; }
+      .agg-bar { padding: 36px 40px; }
+      .reviews-section { padding: 70px 40px; }
+      .platforms-section { padding: 70px 40px; }
+      .cta-banner { padding: 60px 40px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      nav.scrolled { padding: 12px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.mobile-open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: white; padding: 24px; gap: 18px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      }
+      .page-hero { padding: 120px 24px 60px; }
+      .agg-bar { padding: 30px 24px; gap: 24px; flex-direction: column; }
+      .agg-divider { width: 60px; height: 1px; }
+      .reviews-section { padding: 60px 24px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .platforms-section { padding: 60px 24px; }
+      .platforms-grid { flex-direction: column; align-items: center; }
+      .platform-card { width: 100%; max-width: 320px; }
+      .cta-banner { padding: 50px 24px; }
+      .footer-top { flex-direction: column; }
+      footer { padding: 60px 24px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Doug <span>Reynolds</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="sold.html">Sold</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="index.html#reviews" class="active">Reviews</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-eyebrow">Client Reviews</div>
+    <h1 class="page-hero-title">What People Are <em>Saying</em></h1>
+    <p class="page-hero-subtitle">My clients don't just close deals &mdash; they gain a lifelong real estate resource.</p>
+  </section>
+
+  <!-- REVIEW AGGREGATION BAR -->
+  <div class="agg-bar">
+    <div class="agg-score">
+      <div class="agg-number">4.9</div>
+      <div class="agg-stars-wrap">
+        <div class="agg-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="agg-count">290+ Reviews</div>
+      </div>
+    </div>
+    <div class="agg-divider"></div>
+    <div class="agg-platforms">
+      <span class="platform-badge">Google</span>
+      <span class="platform-badge">Zillow</span>
+      <span class="platform-badge">Realtor.com</span>
+      <span class="platform-badge">Facebook</span>
+      <span class="platform-badge">Nextdoor</span>
+    </div>
+  </div>
+
+  <!-- REVIEWS GRID -->
+  <section class="reviews-section">
+    <div class="section-eyebrow">Testimonials</div>
+    <h2 class="section-title">Real Stories, Real <em>Results</em></h2>
+    <div class="reviews-grid">
+
+      <!-- Review 1 -->
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Doug made us feel like his only clients. He was always available, always patient, and his knowledge of Sacramento neighborhoods saved us from making a costly mistake. We couldn't be happier in our new home."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">M&amp;S</div>
+          <div>
+            <div class="review-author-name">Marcus &amp; Sarah T.</div>
+            <div class="review-author-role">First-Time Buyers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"We were nervous about selling after 20 years. Doug walked us through every step, kept us informed, and got us $30K over asking. His team of professionals made the whole process painless."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">L&amp;R</div>
+          <div>
+            <div class="review-author-name">Linda &amp; Robert K.</div>
+            <div class="review-author-role">Home Sellers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Doug's educational videos are what drew me in &mdash; but his genuine care for his clients is what made me stay. He found my 'Why' before he found my house, and that made all the difference."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">JM</div>
+          <div>
+            <div class="review-author-name">Jessica M.</div>
+            <div class="review-author-role">Relocation Client</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 4 -->
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"We've bought and sold three homes with Doug over the past decade. His market knowledge is unmatched, and he treats every transaction like it's his first &mdash; with energy, dedication, and integrity."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">D&amp;K</div>
+          <div>
+            <div class="review-author-name">David &amp; Karen P.</div>
+            <div class="review-author-role">Repeat Clients</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 5 -->
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Doug helped us navigate a complicated relocation from out of state. He gave us virtual neighborhood tours, connected us with local resources, and made Sacramento feel like home before we even arrived."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">MR</div>
+          <div>
+            <div class="review-author-name">Michael R.</div>
+            <div class="review-author-role">Relocation Buyer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 6 -->
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"As a first-time investor, I had a lot of questions. Doug patiently walked me through cap rates, rental analysis, and property management. I now own two rental properties thanks to his guidance."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">AL</div>
+          <div>
+            <div class="review-author-name">Anthony L.</div>
+            <div class="review-author-role">Investor</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 7 -->
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Doug sold our home in College-Glen in just 8 days &mdash; for $45K over asking! His pricing strategy and marketing were spot-on. We couldn't have asked for a better experience."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">S&amp;C</div>
+          <div>
+            <div class="review-author-name">Sandra &amp; Chris H.</div>
+            <div class="review-author-role">Home Sellers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 8 -->
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"What sets Doug apart is his commitment to education. He doesn't just tell you what to do &mdash; he explains why. I felt empowered and informed throughout the entire buying process."</p>
+        <div class="review-author">
+          <div class="review-author-avatar">RW</div>
+          <div>
+            <div class="review-author-name">Rachel W.</div>
+            <div class="review-author-role">First-Time Buyer</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REVIEW PLATFORM LINKS -->
+  <section class="platforms-section">
+    <div class="section-eyebrow">Across the Web</div>
+    <h2 class="section-title">Read More <em>Reviews</em></h2>
+    <div class="platforms-grid">
+      <a href="#" class="platform-card">
+        <div class="platform-card-icon">&#127759;</div>
+        <div class="platform-card-name">Google Reviews</div>
+        <div class="platform-card-action">Read Reviews</div>
+      </a>
+      <a href="#" class="platform-card">
+        <div class="platform-card-icon">&#127968;</div>
+        <div class="platform-card-name">Zillow Reviews</div>
+        <div class="platform-card-action">Read Reviews</div>
+      </a>
+      <a href="#" class="platform-card">
+        <div class="platform-card-icon">&#128205;</div>
+        <div class="platform-card-name">Realtor.com Reviews</div>
+        <div class="platform-card-action">Read Reviews</div>
+      </a>
+      <a href="#" class="platform-card">
+        <div class="platform-card-icon">&#128172;</div>
+        <div class="platform-card-name">Facebook Reviews</div>
+        <div class="platform-card-action">Read Reviews</div>
+      </a>
+      <a href="#" class="platform-card">
+        <div class="platform-card-icon">&#127969;</div>
+        <div class="platform-card-name">Nextdoor Reviews</div>
+        <div class="platform-card-action">Read Reviews</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h2>Ready to Experience the Difference?</h2>
+    <p>Join 600+ satisfied clients. Let's start with a conversation about your real estate goals.</p>
+    <a href="index.html#contact" class="btn-primary">Contact Doug</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Doug <span>Reynolds</span></div>
+        <p class="footer-tagline">Sacramento real estate expert since 2006. Never too busy for your referrals.</p>
+      </div>
+      <div class="footer-links-group">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="sold.html">Recently Sold</a>
+        <a href="resources.html">Resources</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div class="footer-links-group">
+        <h4>Services</h4>
+        <a href="services.html">Buy a Home</a>
+        <a href="services.html">Sell a Home</a>
+        <a href="index.html#contact">Home Valuation</a>
+        <a href="https://sacramentorealestateblog.com" target="_blank">Read the Blog</a>
+      </div>
+      <div class="footer-links-group">
+        <h4>Connect</h4>
+        <a href="https://www.facebook.com/dougreynoldsrealestate" target="_blank">Facebook</a>
+        <a href="https://www.youtube.com/@reynoldsrealestate" target="_blank">YouTube</a>
+        <a href="https://www.instagram.com/dougreynoldsrealestate" target="_blank">Instagram</a>
+        <a href="https://sacramentorealestateblog.com" target="_blank">Blog</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Doug Reynolds Real Estate Ltd. BRE #01734464. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>
+        <a href="#" onclick="openModal('termsModal'); return false;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODALS -->
+  <div class="modal-overlay" id="privacyModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Privacy Policy</div>
+        <button class="modal-close" onclick="closeModal('privacyModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Doug Reynolds Real Estate Ltd. ("we," "us," "our") respects your privacy. This policy explains how we collect, use, and protect information submitted through this website.</p>
+        <h3>Information We Collect</h3>
+        <p>We collect information you voluntarily provide through our contact form, including your name, email address, phone number, and message content. We may also collect standard web analytics data such as page views and device type.</p>
+        <h3>How We Use Your Information</h3>
+        <p>Your information is used solely to respond to your real estate inquiries, provide requested services, and maintain communication about your transaction or interests. We will never sell or share your personal information with third parties for marketing purposes.</p>
+        <h3>Data Protection</h3>
+        <p>We implement reasonable security measures to protect your personal information. However, no method of electronic transmission is 100% secure.</p>
+        <h3>Contact</h3>
+        <p>For privacy questions, contact us at DougReynoldsRealEstate@gmail.com or (916) 494-8441.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="termsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Terms of Service</div>
+        <button class="modal-close" onclick="closeModal('termsModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>By using this website, you agree to the following terms and conditions.</p>
+        <h3>Disclaimer</h3>
+        <p>The information on this website is for general informational purposes only. While we strive for accuracy, we make no guarantees about the completeness or reliability of any information. Real estate market conditions change rapidly; always consult directly with Doug Reynolds for current advice.</p>
+        <h3>No Guaranteed Outcomes</h3>
+        <p>Testimonials and past results do not guarantee future outcomes. Every real estate transaction is unique and results vary based on market conditions, property specifics, and other factors.</p>
+        <h3>Licensing</h3>
+        <p>Doug Reynolds is a licensed real estate agent in the state of California. BRE License #01734464. Brokered by Coldwell Banker.</p>
+        <h3>Contact</h3>
+        <p>Questions about these terms? Contact us at DougReynoldsRealEstate@gmail.com or (916) 494-8441.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Nav scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navLinksEl = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinksEl.classList.toggle('mobile-open');
+    });
+    navLinksEl.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinksEl.classList.remove('mobile-open');
+      });
+    });
+
+    // Modals
+    function openModal(id) {
+      document.getElementById(id).classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          overlay.classList.remove('show');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.show').forEach(m => {
+          m.classList.remove('show');
+          document.body.style.overflow = '';
+        });
+      }
+    });
+  </script>
+</body>
+</html>
